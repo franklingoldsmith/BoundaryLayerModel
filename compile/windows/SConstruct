@@ -1,0 +1,11 @@
+env = Environment(TARGET_ARCH='amd64', MSVC_VERSION='14.2')
+
+env['CXX'] = '$CC'
+env.Append(CPPPATH=['C:\\cantera\\canteraBuild\\include', 'C:\\Gandhali\\research\\sundials-6.0.0\\instdir\\include', 'C:\\Gandhali\\research\\boost_1_70_0'],
+           LIBS=['cantera', 'sundials_cvodes', 'sundials_ida', 'sundials_nvecserial'],
+           LIBPATH=['C:\\cantera\\canteraBuild\\lib', 'C:\\sundials-6.0.0\\instdir\\lib'],
+           LINKFLAGS=['/nologo', '/DEBUG', '/NODEFAULTLIB:MSVCRTD'],
+           FRAMEWORKS=[])
+
+program = env.Program('boundaryLayer', ['main.cpp', 'solver.cpp', 'BoundaryLayer.cpp'])
+Default(program)

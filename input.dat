@@ -1,0 +1,46 @@
+// Input file for a boundary-layer model
+
+// Geometry
+LENGTH			2			            // Length of the reactor [m]
+CHANNELRAD		0.1			            // Radius of the reactor channel [m]
+INNER_RAD       0.00                    // Inner radius of the annulus
+
+// Mesh in Psi (radial) direction
+NUMPOINTS_PSI   10                      // Number of points in Psi direction
+STRETCH_FACTOR  1.1                     // Mesh stretch factor in Psi direction
+
+// Eqution of state
+EOSTYPE 		IDEAL			        // Type of Equation of state [IDEAL]
+
+// Filename
+GASFILENAME 	nist_pfas.yaml	        // Name of the XML file containing gas phase
+GASPHASE		gas				        // Name of the gas phase in XML file
+
+// Inlet conditions
+INLETTEMP 	 	2000	 	 	        // Inlet temperature [K] 
+INLETPRES		1e5                     // Inlet Pressure [Pa]
+//SCCM 			1 	                    // Specify velocity in terms of [sccm]
+//VEL 			0.1311                  // Specify velocity in terms of [m/s]
+RE 	 	        500	                    // Specify Reynolds number  
+
+// Wall boundary conditions
+TWALL 	        500                     // Wall temperature[K] 
+
+// Inlet species MASS/MOLE fractions
+SPECIESFRAC     MOLE	                // Specify inlet composition in terms of MOLE/MASS fractions []
+H2O	0.290113878
+CO2	0.095056939
+N2	0.614828183
+CF4	0.000001
+
+// Name of the species for calculating DEs
+DE_SPECIES  CF4
+
+// Solver inputs
+ATOL 			1e-12	                // Absolute tolerance
+RTOL 			1e-06		            // Relative tolerance
+INITDT			1e-10		            // Initial time-step
+MAXDT 			1e-02		            // Maximum allowable time-step inside the SUNDIALS
+
+// Output parameters
+PRINTSTEP		10                      // Print every nth time-step
